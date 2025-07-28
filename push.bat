@@ -1,2 +1,5 @@
 @echo off
-git add . && git commit -m "upload music" && git push
+set /p commitMessage="Enter commit message: "
+git add .
+git commit -m "%commitMessage%"
+git push
