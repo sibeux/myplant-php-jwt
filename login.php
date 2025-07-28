@@ -6,8 +6,8 @@ include 'config.php';
 
 $key = "your_secret_key"; // Ganti dengan kunci rahasia
 $issuedAt = time();
-// $expirationTime = $issuedAt + (3600 * 24 * 1); // token berlaku selama 1 hari
-$expirationTime = $issuedAt + (300);
+$expirationTime = $issuedAt + (3600 * 24 * 1); // token berlaku selama 1 hari
+// $expirationTime = $issuedAt + (300); // token berlaku selama 5 menit
 $issuer = "https://sibeux.my.id";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
