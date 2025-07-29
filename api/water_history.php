@@ -10,11 +10,11 @@ $method = $_SERVER['REQUEST_METHOD'] === 'POST'
 
 switch ($method) {
     case 'get_water_history':
-        getPlantingDate($db);
+        getWaterHistory($db);
         break;
 
     case 'set_water_history':
-        setPlantingDate($db);
+        setWaterHistory($db);
         break;
 
     default:
