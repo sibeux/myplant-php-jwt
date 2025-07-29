@@ -32,12 +32,15 @@ function getWaterHistory($db) {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $data = $result->fetch_assoc();
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
 
         echo json_encode([
             'status' => 'success',
-            'data' => $data ?: [],
-            'message' => $data ? 'Date retrieved successfully' : 'No date found'
+            'data' => $data,
+            'message' => $data ? 'Data retrieved successfully' : 'No data found'
         ]);
 
         $stmt->close();
@@ -50,7 +53,7 @@ function getWaterHistory($db) {
     }
 }
 
-// Set tanggal tanam
+
 function setWaterHistory($db) {
     $time = $_POST['time'] ?? null;
     $duration = $_POST['duration'] ?? null;
