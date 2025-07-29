@@ -62,6 +62,8 @@ function setWaterHistory($db) {
     $duration = $input['duration'] ?? null;
     $type = $input['type'] ?? null;
 
+    echo $time;
+
     if (!$time) {
         echo json_encode([
             'status' => 'error',
