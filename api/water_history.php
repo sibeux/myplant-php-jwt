@@ -4,8 +4,8 @@ include '../config.php';
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 
-$rawInput = file_get_contents("php://input");
-$input = json_decode($rawInput, true);
+$input = json_decode(file_get_contents("php://input"), true); 
+$method = $input['method'] ?? ($_POST['method'] ?? ($_GET['method'] ?? ''));
 
 $method = $_SERVER['REQUEST_METHOD'] === 'POST' 
     ? ($input['method'] ?? '') 
