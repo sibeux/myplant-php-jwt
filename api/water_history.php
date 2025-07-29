@@ -65,7 +65,7 @@ function setWaterHistory($db) {
     if (!$time) {
         echo json_encode([
             'status' => 'error',
-            'time' => $time,
+            'duration' => $duration,
             'message' => 'Date is required.'
         ]);
         return;
