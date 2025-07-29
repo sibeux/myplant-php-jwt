@@ -4,8 +4,11 @@ include '../config.php';
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 
+$rawInput = file_get_contents("php://input");
+$input = json_decode($rawInput, true);
+
 $method = $_SERVER['REQUEST_METHOD'] === 'POST' 
-    ? ($_POST['method'] ?? '') 
+    ? ($input['method'] ?? '') 
     : ($_GET['method'] ?? '');
 
 switch ($method) {
@@ -55,9 +58,9 @@ function getWaterHistory($db) {
 
 
 function setWaterHistory($db) {
-    $time = $_POST['time'] ?? null;
-    $duration = $_POST['duration'] ?? null;
-    $type = $_POST['type'] ?? null;
+    $time = $input['time'] ?? null;
+    $duration = $input['duration'] ?? null;
+    $type = $input['type'] ?? null;
 
     if (!$time) {
         echo json_encode([
