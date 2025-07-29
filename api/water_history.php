@@ -58,8 +58,8 @@ function getWaterHistory($db) {
 
 
 function setWaterHistory($db) {
-    global $method;
-    
+    global $input;
+
     $time = $input['time'] ?? $_POST['time'];
     $duration = $input['duration'] ?? $_POST['duration'];
     $type = $input['type'] ?? $_POST['type'];
@@ -67,7 +67,6 @@ function setWaterHistory($db) {
     if (!$time) {
         echo json_encode([
             'status' => 'error',
-            'method' => $method,
             'message' => 'Date is required.'
         ]);
         return;
